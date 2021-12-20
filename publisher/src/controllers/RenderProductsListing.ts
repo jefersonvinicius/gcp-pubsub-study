@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { getPaginationParams } from '../helpers/http';
-import { Product } from '../models/Product';
 import { GetProductsService } from '../services/GetProductsService';
 
 export class RenderProductsListing {
@@ -15,6 +14,8 @@ export class RenderProductsListing {
       total: result.total,
       currentTotal,
       allProductsLoaded: currentTotal === result.total,
+      nextOffset: pagination.offset + pagination.limit,
+      previousOffset: pagination.offset ? pagination.offset - pagination.limit : 0,
       ...pagination,
     });
   }

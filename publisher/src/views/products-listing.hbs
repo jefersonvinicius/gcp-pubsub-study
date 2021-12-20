@@ -26,15 +26,15 @@
                 </tbody>
             </table>
             <div class="d-flex justify-content-center align-items-center">
-                <button class="btn btn-primary" {{#unless offset }} disabled {{/unless}}>
+                <a href="/produtos?limite={{ limit }}&inicio={{ previousOffset }}" class="btn btn-primary {{#unless offset }} disabled {{/unless}}">
                     Anterior
-                </button>
+                </a>
                 <span class="mx-2">
                     {{ currentTotal }} / {{ total }}
                 </span>
-                <button class="btn btn-primary" {{#if allProductsLoaded }} disabled {{/if}} >
+                <a href="/produtos?limite={{ limit }}&inicio={{ nextOffset }}" class="btn btn-primary {{#if allProductsLoaded }} disabled {{/if}}">
                     Próximo
-                </button>
+                </a>
             </div>
         </div>
     </body>
