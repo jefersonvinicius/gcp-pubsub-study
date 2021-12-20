@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Cadastrar Produto</title>
+    </head>
+    <body>
+        <form action="/products" method="post">
+            <input type="text" name='name' id="name" />
+            <input type="number" name="price" id="price" />
+            <button>Cadastrar</button>
+            {{ message }}
+        </form>
+    </body>
+</html>
