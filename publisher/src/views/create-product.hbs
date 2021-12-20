@@ -1,13 +1,29 @@
 <html>
     <head>
         <title>Cadastrar Produto</title>
+        {{> bootstrap}}
     </head>
     <body>
-        <form action="/products" method="post">
-            <input type="text" name='name' id="name" />
-            <input type="number" name="price" id="price" />
-            <button>Cadastrar</button>
-            {{ message }}
-        </form>
+        <div class="container-sm p-5">
+            <form action="/products" method="post">
+                <label for="name" class="form-label">Nome:</label>
+                <input type="text" class="form-control" name='name' id="name" />
+                
+                <label for="price" class="form-label">Preço:</label>
+                <input type="number" class="form-control" name="price" id="price" />
+
+                <div class="d-flex justify-content-center my-2">
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </div>
+                
+                {{#if successMessage}}
+                    <div class="alert alert-success" role="alert">{{successMessage}}</div>
+                {{/if}}
+
+                {{#if errorMessage}}
+                    <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+                {{/if}}
+            </form>
+        </div>
     </body>
 </html>

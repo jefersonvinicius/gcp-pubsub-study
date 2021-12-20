@@ -8,9 +8,9 @@ export class CreateCreateProduct {
         name: request.body.name,
         price: request.body.price,
       });
-      request.flash('create-product-message', 'Produto criado com sucesso!');
+      request.flash('product-success-message', 'Produto criado com sucesso!');
     } catch (error: any) {
-      request.flash('create-product-message', 'Erro ao criar produto: ' + error?.message);
+      request.flash('product-error-message', 'Erro ao criar produto: ' + error?.message);
     }
     return response.redirect('/');
   }
