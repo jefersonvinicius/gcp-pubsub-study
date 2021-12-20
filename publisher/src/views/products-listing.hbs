@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Cadastrar Produto</title>
+        {{> bootstrap}}
+    </head>
+    <body>
+        <div class="container-sm p-5">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each products}}
+                        <tr>
+                            <td>{{this.id}}</td>
+                            <td>{{this.name}}</td>
+                            <td>{{brl this.price}}</td>
+                        </tr>
+                    {{else}}
+                        <div class="alert alert-info" role="alert">Nenhum produto encontrado!</div>
+                    {{/each}}
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center align-items-center">
+                <button class="btn btn-primary" {{#unless offset }} disabled {{/unless}}>
+                    Anterior
+                </button>
+                <span class="mx-2">
+                    {{ currentTotal }} / {{ total }}
+                </span>
+                <button class="btn btn-primary" {{#if allProductsLoaded }} disabled {{/if}} >
+                    Próximo
+                </button>
+            </div>
+        </div>
+    </body>
+</html>

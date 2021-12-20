@@ -37,4 +37,12 @@ export class Product extends Model<ProductAttrs, ProductCreationAttrs> implement
       }
     );
   }
+
+  toModelView(): ProductAttrs {
+    return {
+      id: this.id,
+      name: this.name,
+      price: this.price,
+    };
+  }
 }
