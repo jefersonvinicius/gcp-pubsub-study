@@ -5,6 +5,11 @@
     </head>
     <body>
         <div class="container-sm p-5">
+            <div class="d-flex justify-content-end">
+                <a href="/" class="btn btn-primary">
+                    ADICIONAR PRODUTO
+                </a>
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -19,6 +24,13 @@
                             <td>{{this.id}}</td>
                             <td>{{this.name}}</td>
                             <td>{{brl this.price}}</td>
+                            <td align="right">
+                                <form method="POST" action="/produtos/{{ this.id }}?_method=DELETE">
+                                    <button type="submit" class="btn">
+                                        <i class="bi-trash text-danger"></i>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     {{else}}
                         <div class="alert alert-info" role="alert">Nenhum produto encontrado!</div>

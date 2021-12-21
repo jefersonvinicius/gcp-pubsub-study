@@ -9,6 +9,7 @@ import bodyParser from 'body-parser';
 import flash from 'connect-flash';
 import session from 'express-session';
 import { brl } from './helpers/formatter';
+import methodOverride from 'method-override';
 
 const app = express();
 
@@ -18,6 +19,7 @@ const hbs = create({
   helpers: { brl },
 });
 
+app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: 'any', saveUninitialized: true, resave: true }));
 app.use(flash());
