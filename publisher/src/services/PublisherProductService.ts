@@ -6,6 +6,21 @@ export class PublisherProductService {
     const pubSub = new PubSub();
     const topic = pubSub.topic('products');
 
-    await topic.publishMessage({ data: Buffer.from('Teste') });
+    const productNotSynced = await Product.findOne({
+      where: { synced: false },
+    });
+
+    if (!productNotSynced) {
+      console.log('All products synced!!');
+      return;
+    }
+
+    const data = Buffer.from(JSON.stringify(productNotSynced.toModelView()));
+    await topic.publishMessage({ data });
+
+    await productNotSynced.update({
+      synced: true,
+      syncedAt: new Date(),
+    });
   }
 }
